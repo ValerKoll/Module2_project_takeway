@@ -48,6 +48,28 @@ mocks too.
 >> will be delivered before 18:52" after I have ordered.
 >> string: message based on reasonable delivery time (e.g. ~30 min)
 
+### design processing
+
+intitializer:
+    add resturants
+    add dishes for each resturants
+    nested dictionary
+        app{
+            resturant1
+                {dishe1
+                    {price, time}}
+                    ....
+            resturants2
+                {dishe1
+                    {price, time}}
+                    ....
+            ....
+            }
+list resturants
+    >>select rest
+list dishes
+liste orders
+
 ### integration
 
 ```
@@ -57,7 +79,27 @@ mocks too.
                     2.list of customers - customers
                     3.list of Orders - orders
 
-        methods:    (TBD)
+        methods:    add
+                    > parameters:   
+                    > actions:      
+                    > return:       
+                    list_rest
+                    > parameters:   
+                    > actions:      
+                    > return:       
+                    select_rest
+                    > parameters:   
+                    > actions:      
+                    > return:       
+                    list_rest_with_dishes
+                    > parameters:   
+                    > actions:      
+                    > return:       
+                    confirm_order
+                    > parameters:   
+                    > actions:      
+                    > return:       
+
     ----------------------------------------------
 
 >>> class Resturant (main container of DishEntry)
@@ -66,7 +108,13 @@ mocks too.
 
         methods:    add_entry
                     > parameters:   1.class entry
-                    1.
+                    > actions:      1. add dish
+                    > return:       none
+                    get_entries     
+                    > parameters:   1.class entry
+                    > actions:      1. retrive list of dishes
+                    > return:       list
+
     ----------------------------------------------
 
 >>> class DishEntry (single item with price and preparation time)
@@ -74,13 +122,27 @@ mocks too.
     > properties:     1.2.3(same as 1.2.3 input)
 
         methods:    none
+
     ----------------------------------------------
 
 >>> class Customer  (single item with distance from resturant)
+    > parameters:   1.Name  2.Address
+    > properties:   (same as above)
+
     ----------------------------------------------
 >>> class Order
+    > parameters:   1.order number  2.list of dishes
+    > properties:   (same as above)
+
+        methods:    checkout
+
     ----------------------------------------------
 >>> class DeliveryService  (single service linked to order)
+    > parameters:   
+    > properties:   
+
+        methods:    received
+
     ----------------------------------------------
 
 ```
